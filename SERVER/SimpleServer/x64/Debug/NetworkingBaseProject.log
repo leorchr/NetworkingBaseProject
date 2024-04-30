@@ -1,0 +1,3 @@
+﻿  SimpleServer.cpp
+D:\GAME3\rocherLeo\NetworkingBaseProject\SERVER\SimpleServer.cpp(64,68): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  NetworkingBaseProject.vcxproj -> D:\GAME3\rocherLeo\NetworkingBaseProject\SERVER\x64\Debug\SimpleServer.exe

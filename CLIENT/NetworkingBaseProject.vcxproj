@@ -134,7 +134,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ChatScene.cpp" />
+    <ClCompile Include="LogInScene.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SimpleClient.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ChatScene.h" />
+    <ClInclude Include="LogInScene.h" />
+    <ClInclude Include="Scene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
