@@ -31,8 +31,6 @@ public:
 	void update() override;
 	void send(std::string message);
 	void close();
-	void serialize(Message* data, char* buffer);
-	void deserialize(char* buffer, Message* data);
 private:
 	std::vector<Message> logs{ Message{"Waiting for someone to talk to...", "", false}};
 	std::string typing;

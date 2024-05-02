@@ -2,30 +2,14 @@
 #include <SDL_net.h>
 #include <iostream>
 #include <vector>
+#include <map>
 using namespace std;
 
-struct Message
-{
-public:
-	Message(std::string contentP, std::string usernameP, bool fromMeP) :
-		content(contentP),
-		username(usernameP),
-		fromMe(fromMeP)
-	{}
-
-	std::string content = "";
-	std::string username = "";
-	bool fromMe = false;
-};
-
-void serialize(Message* data, char* buffer);
-void deserialize(char* buffer, Message* data);
+std::map<TCPsocket, std::string> logs;
+TCPsocket clientReceived = nullptr;
 
 int main(int argc, char* argv[]) {
-
-	char buffer[sizeof(Message)];
-	memset(buffer, 0, sizeof(Message));
-
+	char buffer[1024];
 	if (SDLNet_Init() == -1) {
 		cerr << "SDLNet_Init error: " << SDLNet_GetError() << endl;
 		return 1;
@@ -54,8 +38,13 @@ int main(int argc, char* argv[]) {
 		}
 		else {
 			clients.push_back(clientSocket);
-			cout << "A new client has connected !" << endl;
+			int bytesRead = SDLNet_TCP_Recv(clientSocket, buffer, sizeof(buffer));
+			cout << "Client " << buffer << " is connected !" << endl;
+			logs[clientSocket] = buffer;
 			clientSocket = nullptr;
+
+
+
 		}
 		if (clients.size() != 0) {
 			bool received = false;
@@ -64,37 +53,30 @@ int main(int argc, char* argv[]) {
 				SDLNet_SocketSet socketSet = SDLNet_AllocSocketSet(clients.size());
 				SDLNet_AddSocket(socketSet, reinterpret_cast<SDLNet_GenericSocket>(client));
 				if (SDLNet_CheckSockets(socketSet, 10) > 0) {
-					
-					int bytesRead = SDLNet_TCP_Recv(client, buffer, sizeof(Message));
+
+					int bytesRead = SDLNet_TCP_Recv(client, buffer, sizeof(buffer));
 					if (bytesRead > 0) {
 						received = true;
-						Message* receivedData = new Message("","", false);
-						deserialize(buffer, receivedData);
-						cout << "Incomming message -> Username : " << receivedData->username << " --- Content : " << receivedData->content << endl;
+						clientReceived = client;
+						cout << "Incomming message -> Username : " << logs[client] << " --- Content : " << buffer << endl;
 					}
 				}
 				SDLNet_FreeSocketSet(socketSet);
 			}
 			if (received) {
 				for (auto client : clients) {
-					int bytesSent = SDLNet_TCP_Send(client, buffer, sizeof(Message));
-					if (bytesSent < sizeof(Message)) {
-						cerr << "SDLNet TCP Send error: " << SDLNet_GetError() << endl;
-						break;
+					if (client != clientReceived) {
+
+						std::string message = logs[clientReceived]  + " : " + buffer;
+						int bytesSent = SDLNet_TCP_Send(client, message.c_str(), message.length() + 1);
+						if (bytesSent < message.length() + 1) {
+							cerr << "SDLNet TCP Send error: " << SDLNet_GetError() << endl;
+							break;
+						}
 					}
 				}
 			}
 		}
 	}
 	return 0;
-}
-
-// Serialize function
-void serialize(Message* data, char* buffer) {
-	memcpy(buffer, data, sizeof(Message));
-}
-
-// Deserialize function
-void deserialize(char* buffer, Message* data) {
-	memcpy(data, buffer, sizeof(Message));
 }

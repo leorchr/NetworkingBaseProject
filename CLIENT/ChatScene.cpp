@@ -1,4 +1,12 @@
 #include "ChatScene.h"
+#include <cstring>
+#include <iostream>
+#include <new>
+#include <ostream>
+#include <string>
+#include <vector>
+#include "raylib.h"
+#include "SDL_net.h"
 using namespace std;
 
 ChatScene::ChatScene(string ipAdressP, string portP, string usernameP) :
@@ -33,6 +41,16 @@ bool ChatScene::init()
 		SDLNet_Quit();
 		return false;
 	}
+
+	char buffer[1024];
+	strcpy_s(buffer, username.c_str());
+	int bytesSent = SDLNet_TCP_Send(clientSocket, buffer, sizeof(buffer));
+	if (bytesSent < typing.length() + 1) {
+		cerr << "SDLNet TCP Send error: " << SDLNet_GetError() << endl;
+		SDLNet_TCP_Close(clientSocket);
+		SDLNet_Quit();
+	}
+
 	InitWindow(width, height, "Chat");
 	SetTargetFPS(60);
 	return true;
@@ -67,8 +85,8 @@ void ChatScene::input() {
 		{
 			//Send the message typing to the server here!
 			logs.push_back(Message{ typing, username, true});
-			if(logs.size() > 10) logs.erase(logs.begin());
 			send(typing);
+			typing.clear();
 		}
 	}
 }
@@ -80,33 +98,23 @@ void ChatScene::update() {
 	SDLNet_AddSocket(socketSet, reinterpret_cast<SDLNet_GenericSocket>(clientSocket));
 	if (SDLNet_CheckSockets(socketSet, 0) != 0) {
 
-		char buffer[sizeof(Message)];
-		int bytesRead = SDLNet_TCP_Recv(clientSocket, buffer, sizeof(Message));
-		if (bytesRead > 0) {
-
-			Message* receivedData = new Message("", "", false);;
-			deserialize(buffer, receivedData);
-
-			char* typingArray = new char[typing.length() + 1];
-			strcpy_s(typingArray, typing.length() + 1, typing.c_str());
-			if (!(strcmp(receivedData->content.c_str(), typingArray) == 0)) {
-				receivedData->fromMe = false;
-				logs.push_back(*receivedData);
-				cout << "Received: " << bytesRead << " bytes from the server !" << endl;
-				cout << "Username: " << receivedData->username << " --- Message :" << receivedData->content << endl;
-			}
-		}
-		typing.clear();
+		char buffer[1024];
+		Message* receivedData = new Message("", "", false);
+		int bytesContent = SDLNet_TCP_Recv(clientSocket, buffer, sizeof(buffer));
+		receivedData->content = buffer;
+		logs.push_back(*receivedData);
+		cout << "Received: " << bytesContent << " bytes from the server !" << endl;
+		cout << "Message received : " << receivedData->content << endl;
 	}
 	SDLNet_FreeSocketSet(socketSet);
+
+	if(logs.size() > 19) logs.erase(logs.begin());
 }
 
 void ChatScene::send(string message) {
-	Message msg = Message{ message, username, false };
-	char buffer[sizeof(Message)];
-	serialize(&msg, buffer);
-
-	int bytesSent = SDLNet_TCP_Send(clientSocket, buffer, sizeof(Message));
+	char buffer[1024];
+	strcpy_s(buffer, message.c_str());
+	int bytesSent = SDLNet_TCP_Send(clientSocket, buffer, sizeof(buffer));
 	if (bytesSent < typing.length() + 1) {
 		cerr << "SDLNet TCP Send error: " << SDLNet_GetError() << endl;
 		SDLNet_TCP_Close(clientSocket);
@@ -119,14 +127,4 @@ void ChatScene::close()
 	SDLNet_TCP_Close(clientSocket);
 	SDLNet_Quit();
 	CloseWindow();
-}
-
-// Serialize function
-void ChatScene::serialize(Message* data, char* buffer) {
-	memcpy(buffer, data, sizeof(Message));
-}
-
-// Deserialize function
-void ChatScene::deserialize(char* buffer, Message* data) {
-	memcpy(data, buffer, sizeof(Message));
 }

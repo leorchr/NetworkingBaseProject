@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{C64BB295-CF43-44D9-AA30-DCA567D0C999}|NetworkingBaseProject.vcxproj|solutionrelative:ChatScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C64BB295-CF43-44D9-AA30-DCA567D0C999}|NetworkingBaseProject.vcxproj|D:\\GAME3\\rocherLeo\\NetworkingBaseProject\\CLIENT\\ChatScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C64BB295-CF43-44D9-AA30-DCA567D0C999}|NetworkingBaseProject.vcxproj|solutionrelative:ChatScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C64BB295-CF43-44D9-AA30-DCA567D0C999}|NetworkingBaseProject.vcxproj|D:\\GAME3\\rocherLeo\\NetworkingBaseProject\\CLIENT\\LogInScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C64BB295-CF43-44D9-AA30-DCA567D0C999}|NetworkingBaseProject.vcxproj|solutionrelative:LogInScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C64BB295-CF43-44D9-AA30-DCA567D0C999}|NetworkingBaseProject.vcxproj|D:\\GAME3\\rocherLeo\\NetworkingBaseProject\\CLIENT\\LogInScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C64BB295-CF43-44D9-AA30-DCA567D0C999}|NetworkingBaseProject.vcxproj|solutionrelative:LogInScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C64BB295-CF43-44D9-AA30-DCA567D0C999}|NetworkingBaseProject.vcxproj|D:\\GAME3\\rocherLeo\\NetworkingBaseProject\\CLIENT\\ChatScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C64BB295-CF43-44D9-AA30-DCA567D0C999}|NetworkingBaseProject.vcxproj|solutionrelative:ChatScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C64BB295-CF43-44D9-AA30-DCA567D0C999}|NetworkingBaseProject.vcxproj|D:\\GAME3\\rocherLeo\\NetworkingBaseProject\\CLIENT\\SimpleClient.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -42,17 +42,16 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "ChatScene.h",
               "DocumentMoniker": "D:\\GAME3\\rocherLeo\\NetworkingBaseProject\\CLIENT\\ChatScene.h",
               "RelativeDocumentMoniker": "ChatScene.h",
               "ToolTip": "D:\\GAME3\\rocherLeo\\NetworkingBaseProject\\CLIENT\\ChatScene.h",
               "RelativeToolTip": "ChatScene.h",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABkAAABKAAAA",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAAAA8AAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-04-29T14:32:51.882Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -66,14 +65,14 @@
               "RelativeDocumentMoniker": "ChatScene.cpp",
               "ToolTip": "D:\\GAME3\\rocherLeo\\NetworkingBaseProject\\CLIENT\\ChatScene.cpp",
               "RelativeToolTip": "ChatScene.cpp",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAADEAAAAHAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAGUAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-04-29T14:33:23.626Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "LogInScene.cpp",
               "DocumentMoniker": "D:\\GAME3\\rocherLeo\\NetworkingBaseProject\\CLIENT\\LogInScene.cpp",
               "RelativeDocumentMoniker": "LogInScene.cpp",
@@ -81,12 +80,11 @@
               "RelativeToolTip": "LogInScene.cpp",
               "ViewState": "AQIAAEgAAAAAAAAAAAAUwGQAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-29T14:32:22.879Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T14:32:22.879Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "LogInScene.h",
               "DocumentMoniker": "D:\\GAME3\\rocherLeo\\NetworkingBaseProject\\CLIENT\\LogInScene.h",
               "RelativeDocumentMoniker": "LogInScene.h",
@@ -94,8 +92,7 @@
               "RelativeToolTip": "LogInScene.h",
               "ViewState": "AQIAAAQAAAAAAAAAAAAjwBMAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-29T14:31:31.441Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T14:31:31.441Z"
             },
             {
               "$type": "Document",
@@ -107,8 +104,7 @@
               "RelativeToolTip": "SimpleClient.cpp",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAACQAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-29T08:47:36.805Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T08:47:36.805Z"
             },
             {
               "$type": "Document",
@@ -120,12 +116,11 @@
               "RelativeToolTip": "Scene.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-29T14:27:56.533Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T14:27:56.533Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Scene.cpp",
               "DocumentMoniker": "D:\\GAME3\\rocherLeo\\NetworkingBaseProject\\CLIENT\\Scene.cpp",
               "RelativeDocumentMoniker": "Scene.cpp",
@@ -133,8 +128,7 @@
               "RelativeToolTip": "Scene.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-29T14:30:03.786Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T14:30:03.786Z"
             }
           ]
         }
