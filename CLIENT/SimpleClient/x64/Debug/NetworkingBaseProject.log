@@ -1,3 +1,2 @@
-﻿  ChatScene.cpp
-D:\GAME3\rocherLeo\NetworkingBaseProject\CLIENT\ChatScene.cpp(30,23): warning C4838: conversion from 'int' to 'Uint32' requires a narrowing conversion
+﻿  SimpleClient.cpp
   NetworkingBaseProject.vcxproj -> D:\GAME3\rocherLeo\NetworkingBaseProject\CLIENT\x64\Debug\SimpleClient.exe

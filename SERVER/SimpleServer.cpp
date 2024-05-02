@@ -41,11 +41,19 @@ int main(int argc, char* argv[]) {
 			int bytesRead = SDLNet_TCP_Recv(clientSocket, buffer, sizeof(buffer));
 			cout << "Client " << buffer << " is connected !" << endl;
 			logs[clientSocket] = buffer;
+
+			for (auto client : clients) {
+				if (client == clientSocket) break;
+				std::string message = logs[client] + " is connected !";
+				int bytesSent = SDLNet_TCP_Send(client, message.c_str(), message.length() + 1);
+				if (bytesSent < message.length() + 1) {
+					cerr << "SDLNet TCP Send error: " << SDLNet_GetError() << endl;
+					break;
+				}
+			}
 			clientSocket = nullptr;
-
-
-
 		}
+
 		if (clients.size() != 0) {
 			bool received = false;
 			for (auto client : clients) {
@@ -53,12 +61,27 @@ int main(int argc, char* argv[]) {
 				SDLNet_SocketSet socketSet = SDLNet_AllocSocketSet(clients.size());
 				SDLNet_AddSocket(socketSet, reinterpret_cast<SDLNet_GenericSocket>(client));
 				if (SDLNet_CheckSockets(socketSet, 10) > 0) {
-
 					int bytesRead = SDLNet_TCP_Recv(client, buffer, sizeof(buffer));
 					if (bytesRead > 0) {
 						received = true;
 						clientReceived = client;
 						cout << "Incomming message -> Username : " << logs[client] << " --- Content : " << buffer << endl;
+
+						/*if (strcmp(buffer, "exit") == 0) {
+							SDLNet_TCP_Close(client);
+							clients.erase(std::remove(clients.begin(), clients.end(), client), clients.end());
+							logs.erase(client);
+							for (auto client : clients) {
+								std::string message = logs[client] + " is disconnected !";
+								int bytesSent = SDLNet_TCP_Send(client, message.c_str(), message.length() + 1);
+								if (bytesSent < message.length() + 1) {
+									cerr << "SDLNet TCP Send error: " << SDLNet_GetError() << endl;
+									break;
+								}
+							}
+						} // missing this last part
+						else received = true;
+						*/
 					}
 				}
 				SDLNet_FreeSocketSet(socketSet);

@@ -124,6 +124,7 @@ void ChatScene::send(string message) {
 
 void ChatScene::close()
 {
+	send("exit");
 	SDLNet_TCP_Close(clientSocket);
 	SDLNet_Quit();
 	CloseWindow();

@@ -1,4 +1,6 @@
 ﻿  SimpleServer.cpp
-D:\GAME3\rocherLeo\NetworkingBaseProject\SERVER\SimpleServer.cpp(53,68): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-D:\GAME3\rocherLeo\NetworkingBaseProject\SERVER\SimpleServer.cpp(71,81): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\GAME3\rocherLeo\NetworkingBaseProject\SERVER\SimpleServer.cpp(48,79): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\GAME3\rocherLeo\NetworkingBaseProject\SERVER\SimpleServer.cpp(61,68): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\GAME3\rocherLeo\NetworkingBaseProject\SERVER\SimpleServer.cpp(75,83): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\GAME3\rocherLeo\NetworkingBaseProject\SERVER\SimpleServer.cpp(92,81): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   NetworkingBaseProject.vcxproj -> D:\GAME3\rocherLeo\NetworkingBaseProject\SERVER\x64\Debug\SimpleServer.exe

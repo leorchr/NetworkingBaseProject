@@ -26,6 +26,7 @@ int main(int argc, char* argv[]) {
 			currentScene->update();
 			currentScene->draw();
 		}
+		currentScene->close();
 	}
 	else {
 		cerr << "Scene failed to initialize" << endl;
